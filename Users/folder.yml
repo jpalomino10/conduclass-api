@@ -7,5 +7,5 @@ request:
   auth: inherit
 
 docs:
-  content: Gestión de usuarios. Solo ADMIN puede crear usuarios.
+  content: "Gestión de usuarios (CRUD). Solo ADMIN. Todos los endpoints requieren `Authorization` + `X-Tenant-ID`."
   type: text/markdown

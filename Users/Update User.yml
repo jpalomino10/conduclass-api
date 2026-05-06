@@ -1,11 +1,11 @@
 info:
-  name: Create User
+  name: Update User
   type: http
-  seq: 1
+  seq: 4
 
 http:
-  method: POST
-  url: "{{base_url}}/api/user"
+  method: PUT
+  url: "{{base_url}}/api/user/{{user_id}}"
   headers:
     - name: Content-Type
       value: application/json
@@ -17,11 +17,11 @@ http:
     type: json
     data: |-
       {
+        "name": "Juan Actualizado",
         "email": "instructor@tenant.com",
-        "password": "Pass123!",
-        "name": "Juan Instructor",
+        "document": "1044422259",
         "role": "INSTRUCTOR",
-        "document": "1044422259"
+        "active": true
       }
   auth: inherit
 
@@ -31,4 +31,4 @@ settings:
   followRedirects: true
   maxRedirects: 5
 
-docs: Crea un usuario en el tenant. Solo accesible por ADMIN.
+docs: "Actualiza los datos de un usuario: nombre, email, documento, rol y estado activo."
