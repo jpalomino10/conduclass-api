@@ -1,0 +1,32 @@
+info:
+  name: Register Maintenance
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: "{{base_url}}/api/vehicles/{{vehicle_id}}/maintenance"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: Bearer {{access_token}}
+    - name: X-Tenant-ID
+      value: "{{tenant_slug}}"
+  body:
+    type: json
+    data: |-
+      {
+        "description": "Cambio de aceite",
+        "date": "2026-05-05",
+        "mileage": 50000
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Registra un mantenimiento para el vehículo.

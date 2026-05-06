@@ -1,0 +1,22 @@
+info:
+  name: Get All Vehicles
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{base_url}}/api/vehicles"
+  headers:
+    - name: Authorization
+      value: Bearer {{access_token}}
+    - name: X-Tenant-ID
+      value: "{{tenant_slug}}"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Lista todos los vehículos.

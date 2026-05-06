@@ -1,0 +1,34 @@
+info:
+  name: Create User (ADMIN only)
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{base_url}}/api/user"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: Bearer {{access_token}}
+    - name: X-Tenant-ID
+      value: "{{tenant_slug}}"
+  body:
+    type: json
+    data: |-
+      {
+        "email": "instructor@tenant.com",
+        "password": "Pass123!",
+        "name": "Juan Instructor",
+        "role": "INSTRUCTOR",
+        "document": "1044422259"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Crea un usuario en el tenant. Solo accesible por ADMIN.

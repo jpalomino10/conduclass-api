@@ -1,0 +1,42 @@
+info:
+  name: Login Superadmin
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{base_url}}/api/superadmin/login"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "email": "cvisbal0724@gmail.com",
+        "password": "Carol2013!"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        if (res.getStatus() === 200) {
+            const body = res.getBody();
+        //     pm.collectionVariables.set('superadmin_token', body.access_token);
+        //     pm.collectionVariables.set('superadmin_refresh_token', body.refresh_token);
+        //     pm.collectionVariables.set('superadmin_id', body.superadmin.id);
+            test('Login superadmin exitoso', () => expect(res.getStatus()).to.equal(200));
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Autentica un superadmin. Devuelve `access_token` (JWT) y `refresh_token`.
+
+  Guarda automáticamente `superadmin_token`, `superadmin_refresh_token` y `superadmin_id`. No requiere `X-Tenant-ID`.

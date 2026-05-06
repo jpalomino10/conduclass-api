@@ -1,0 +1,31 @@
+info:
+  name: Update Student
+  type: http
+  seq: 4
+
+http:
+  method: PUT
+  url: "{{base_url}}/api/students/{{student_id}}"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: Bearer {{access_token}}
+    - name: X-Tenant-ID
+      value: "{{tenant_slug}}"
+  body:
+    type: json
+    data: |-
+      {
+        "license_category": "B2",
+        "level": 2
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Actualiza datos del estudiante.

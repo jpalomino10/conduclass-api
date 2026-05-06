@@ -1,0 +1,31 @@
+info:
+  name: Update Superadmin
+  type: http
+  seq: 6
+
+http:
+  method: PUT
+  url: "{{base_url}}/api/superadmin/{{superadmin_id}}"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: Bearer {{superadmin_token}}
+  body:
+    type: json
+    data: |-
+      {
+        "email": "superadmin@conduclass.com",
+        "password_hash": "NuevoPass123!",
+        "name": "Super Admin",
+        "active": true
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Actualiza un superadmin.

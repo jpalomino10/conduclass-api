@@ -1,0 +1,31 @@
+info:
+  name: Get Presigned URL (INSTRUCTOR)
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{base_url}}/api/classes/{{class_id}}/photos/presigned-url"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: Bearer {{access_token}}
+    - name: X-Tenant-ID
+      value: "{{tenant_slug}}"
+  body:
+    type: json
+    data: |-
+      {
+        "filename": "foto.jpg",
+        "content_type": "image/jpeg"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Genera una URL prefirmada de S3 para subir una foto. Solo INSTRUCTOR.

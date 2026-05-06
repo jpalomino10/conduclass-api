@@ -1,0 +1,27 @@
+info:
+  name: Promote Student
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: "{{base_url}}/api/students/{{student_id}}/promote"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: Bearer {{access_token}}
+    - name: X-Tenant-ID
+      value: "{{tenant_slug}}"
+  body:
+    type: json
+    data: "{}"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Sube de nivel al estudiante y registra el historial.

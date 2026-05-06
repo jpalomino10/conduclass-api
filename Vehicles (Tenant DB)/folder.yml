@@ -1,0 +1,11 @@
+info:
+  name: Vehicles (Tenant DB)
+  type: folder
+  seq: 6
+
+request:
+  auth: inherit
+
+docs:
+  content: Gestión de vehículos en la base de datos del tenant. Requiere `Authorization` y `X-Tenant-ID`.
+  type: text/markdown

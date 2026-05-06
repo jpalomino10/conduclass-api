@@ -1,0 +1,22 @@
+info:
+  name: Get Level History
+  type: http
+  seq: 7
+
+http:
+  method: GET
+  url: "{{base_url}}/api/students/{{student_id}}/level-history"
+  headers:
+    - name: Authorization
+      value: Bearer {{access_token}}
+    - name: X-Tenant-ID
+      value: "{{tenant_slug}}"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Obtiene el historial de niveles del estudiante.

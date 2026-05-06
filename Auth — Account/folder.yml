@@ -1,0 +1,11 @@
+info:
+  name: Auth — Account
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit
+
+docs:
+  content: Autenticación de usuarios tenant. Todos los endpoints requieren `X-Tenant-ID`.
+  type: text/markdown

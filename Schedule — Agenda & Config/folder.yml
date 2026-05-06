@@ -1,0 +1,11 @@
+info:
+  name: Schedule — Agenda & Config
+  type: folder
+  seq: 10
+
+request:
+  auth: inherit
+
+docs:
+  content: Agenda semanal y configuración del horario. ADMIN puede consultar disponibilidad y editar configuración.
+  type: text/markdown

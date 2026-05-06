@@ -1,0 +1,31 @@
+info:
+  name: Update Class (ADMIN)
+  type: http
+  seq: 4
+
+http:
+  method: PUT
+  url: "{{base_url}}/api/classes/{{class_id}}"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: Bearer {{access_token}}
+    - name: X-Tenant-ID
+      value: "{{tenant_slug}}"
+  body:
+    type: json
+    data: |-
+      {
+        "scheduled_at": "2026-05-11T10:00:00Z",
+        "duration_minutes": 90
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Actualiza una clase. Solo ADMIN.

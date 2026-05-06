@@ -1,0 +1,32 @@
+info:
+  name: Update Availability Block (ADMIN)
+  type: http
+  seq: 4
+
+http:
+  method: PUT
+  url: "{{base_url}}/api/instructors/{{instructor_id}}/availability/{{block_id}}"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: Bearer {{access_token}}
+    - name: X-Tenant-ID
+      value: "{{tenant_slug}}"
+  body:
+    type: json
+    data: |-
+      {
+        "day_of_week": 3,
+        "start_time": "09:00:00",
+        "end_time": "13:00:00"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Actualiza un bloque de disponibilidad. Solo ADMIN.

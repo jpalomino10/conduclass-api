@@ -1,0 +1,31 @@
+info:
+  name: Create Superadmin
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{base_url}}/api/superadmin"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: Bearer {{superadmin_token}}
+  body:
+    type: json
+    data: |-
+      {
+        "email": "nuevo@conduclass.com",
+        "password_hash": "Pass123!",
+        "name": "Nuevo Superadmin",
+        "active": true
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Crea un nuevo superadmin. Requiere token de superadmin.

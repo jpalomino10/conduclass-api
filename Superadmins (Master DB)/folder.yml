@@ -1,0 +1,18 @@
+info:
+  name: Superadmins (Master DB)
+  type: folder
+  seq: 4
+
+request:
+  auth: inherit
+
+docs:
+  content: |-
+    Gestión de superadmins en la base de datos maestra.
+
+    **Flujo de auth:**
+    1. `POST /login` → guarda `superadmin_token` y `superadmin_refresh_token`
+    2. `POST /refresh` → renueva `superadmin_token` cuando expira
+
+    Los endpoints CRUD requieren `superadmin_token`.
+  type: text/markdown

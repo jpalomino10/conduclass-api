@@ -1,0 +1,39 @@
+info:
+  name: Refresh Superadmin Token
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/api/superadmin/refresh"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "refresh_token": "{{superadmin_refresh_token}}"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        if (res.getStatus() === 200) {
+            const body = res.getBody();
+        //     pm.collectionVariables.set('superadmin_token', body.access_token);
+            test('Token superadmin renovado', () => expect(res.getStatus()).to.equal(200));
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Renueva el `access_token` del superadmin usando el `refresh_token` (válido 30 días). Guarda automáticamente el nuevo `superadmin_token`.
+
+  No requiere `Authorization` header.

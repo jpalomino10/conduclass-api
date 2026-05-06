@@ -1,0 +1,34 @@
+info:
+  name: Create Vehicle
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{base_url}}/api/vehicles"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: Bearer {{access_token}}
+    - name: X-Tenant-ID
+      value: "{{tenant_slug}}"
+  body:
+    type: json
+    data: |-
+      {
+        "plate": "ABC123",
+        "brand": "Toyota",
+        "model": "Corolla",
+        "year": 2022,
+        "category": "B1"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Crea un vehículo en el tenant.

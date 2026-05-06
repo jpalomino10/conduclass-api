@@ -1,0 +1,11 @@
+info:
+  name: Students (Tenant DB)
+  type: folder
+  seq: 5
+
+request:
+  auth: inherit
+
+docs:
+  content: Gestión de estudiantes en la base de datos del tenant. Requiere `Authorization` y `X-Tenant-ID`.
+  type: text/markdown

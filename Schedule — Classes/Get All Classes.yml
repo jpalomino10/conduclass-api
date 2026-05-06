@@ -1,0 +1,29 @@
+info:
+  name: Get All Classes
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{base_url}}/api/classes?page=1&limit=20"
+  headers:
+    - name: Authorization
+      value: Bearer {{access_token}}
+    - name: X-Tenant-ID
+      value: "{{tenant_slug}}"
+  params:
+    - name: page
+      value: "1"
+      type: query
+    - name: limit
+      value: "20"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Lista clases con paginación.

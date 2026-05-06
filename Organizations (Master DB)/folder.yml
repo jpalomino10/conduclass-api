@@ -1,0 +1,14 @@
+info:
+  name: Organizations (Master DB)
+  type: folder
+  seq: 3
+
+request:
+  auth: inherit
+
+docs:
+  content: |-
+    CRUD de organizaciones en la base de datos maestra. Requiere token de superadmin (`superadmin_token`).
+
+    Al crear una organización se provisiona automáticamente su base de datos tenant y se ejecutan las migraciones.
+  type: text/markdown

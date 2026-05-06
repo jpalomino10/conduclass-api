@@ -1,0 +1,27 @@
+info:
+  name: Complete Class (INSTRUCTOR)
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: "{{base_url}}/api/classes/{{class_id}}/complete"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: Bearer {{access_token}}
+    - name: X-Tenant-ID
+      value: "{{tenant_slug}}"
+  body:
+    type: json
+    data: "{}"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Completa una clase. Solo INSTRUCTOR.

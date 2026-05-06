@@ -1,0 +1,44 @@
+info:
+  name: Login
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{base_url}}/api/account/login"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: X-Tenant-ID
+      value: "{{tenant_slug}}"
+  body:
+    type: json
+    data: |-
+      {
+        "email": "admin@tenant.com",
+        "password": "Admin123!"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        if (res.getStatus() === 200) {
+            const body = res.getBody();
+        //     pm.collectionVariables.set('access_token', body.access_token);
+        //     pm.collectionVariables.set('refresh_token', body.refresh_token);
+        //     pm.collectionVariables.set('user_id', body.user.id);
+            test('Login exitoso', () => expect(res.getStatus()).to.equal(200));
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Autentica un usuario tenant. Guarda automáticamente `access_token`, `refresh_token` y `user_id`.
+
+  Requiere `X-Tenant-ID` y devuelve un JWT con `UserRole` (ADMIN / INSTRUCTOR / STUDENT).

@@ -1,0 +1,76 @@
+opencollection: 1.0.0
+
+info:
+  name: ConduClass API
+config:
+  proxy:
+    inherit: true
+    config:
+      protocol: http
+      hostname: ""
+      port: ""
+      auth:
+        username: ""
+        password: ""
+      bypassProxy: ""
+
+request:
+  variables:
+    - name: base_url
+      value: https://apidev.conduclass.com
+    - name: tenant_slug
+      value: conduclass-demo
+    - name: access_token
+      value: ""
+    - name: refresh_token
+      value: ""
+    - name: superadmin_token
+      value: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIwMTlkZmIyOC0zMzk1LTcwOTItYTJjYi1mZjhjNTQ0OWE1YjIiLCJlbWFpbCI6ImN2aXNiYWwwNzI0QGdtYWlsLmNvbSIsImV4cCI6MTc3ODE5MTg3MX0.37Z1wFJLHU0p7Ikyf2Gh2U_N3dRaTMTHzWa2IH1C9Kw
+    - name: superadmin_refresh_token
+      value: ""
+    - name: user_id
+      value: ""
+    - name: org_id
+      value: ""
+    - name: superadmin_id
+      value: ""
+    - name: student_id
+      value: ""
+    - name: vehicle_id
+      value: ""
+    - name: instructor_id
+      value: ""
+    - name: class_id
+      value: ""
+    - name: photo_id
+      value: ""
+    - name: block_id
+      value: ""
+
+docs:
+  content: |-
+    # Conduclass API
+
+    API multi-tenant para gestión de autoescuelas.
+
+    ## Flujos de autenticación
+
+    ### Usuarios tenant (ADMIN / INSTRUCTOR / STUDENT)
+    1. `POST /api/account/login` con `X-Tenant-ID` → guarda `access_token` + `refresh_token`
+    2. `POST /api/account/refresh` → renueva `access_token`
+    3. `POST /api/account/logout` → revoca `refresh_token`
+
+    ### Superadmin (gestión de organizaciones)
+    1. `POST /api/superadmin/login` → guarda `superadmin_token` + `superadmin_refresh_token`
+    2. `POST /api/superadmin/refresh` → renueva `superadmin_token`
+
+    ## Bases de datos
+    - **Master DB**: organizaciones y superadmins
+    - **Tenant DB**: usuarios, estudiantes, vehículos, horario (una por organización)
+  type: text/markdown
+bundled: false
+extensions:
+  bruno:
+    ignore:
+      - node_modules
+      - .git

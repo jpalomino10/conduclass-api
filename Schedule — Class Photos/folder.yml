@@ -1,0 +1,16 @@
+info:
+  name: Schedule — Class Photos
+  type: folder
+  seq: 8
+
+request:
+  auth: inherit
+
+docs:
+  content: |-
+    Gestión de fotos de clases. Require `Authorization` + `X-Tenant-ID`.
+
+    - INSTRUCTOR: obtener URL prefirmada, subir foto
+    - ADMIN: eliminar foto
+    - Todos: listar fotos
+  type: text/markdown

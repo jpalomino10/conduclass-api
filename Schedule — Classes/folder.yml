@@ -1,0 +1,16 @@
+info:
+  name: Schedule — Classes
+  type: folder
+  seq: 7
+
+request:
+  auth: inherit
+
+docs:
+  content: |-
+    Gestión de clases. Todas las rutas requieren `Authorization` + `X-Tenant-ID`.
+
+    - ADMIN: crear, actualizar, eliminar, cancelar, no-show
+    - INSTRUCTOR: iniciar, completar
+    - Todos: listar, ver detalle
+  type: text/markdown

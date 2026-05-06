@@ -1,0 +1,30 @@
+info:
+  name: Cancel Class (ADMIN / STUDENT)
+  type: http
+  seq: 8
+
+http:
+  method: POST
+  url: "{{base_url}}/api/classes/{{class_id}}/cancel"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: Bearer {{access_token}}
+    - name: X-Tenant-ID
+      value: "{{tenant_slug}}"
+  body:
+    type: json
+    data: |-
+      {
+        "reason": "Motivo de cancelaci\u00f3n"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Cancela una clase. ADMIN o STUDENT.
