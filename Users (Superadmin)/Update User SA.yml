@@ -1,0 +1,32 @@
+info:
+  name: Update User SA
+  type: http
+  seq: 4
+
+http:
+  method: PUT
+  url: "{{base_url}}/api/user/sa/{{user_id}}"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: Bearer {{superadmin_token}}
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Juan Actualizado",
+        "email": "instructor@tenant.com",
+        "document": "1044422259",
+        "role": "INSTRUCTOR",
+        "active": true
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: "Actualiza los datos de un usuario. Requiere token de superadmin."

@@ -1,0 +1,11 @@
+info:
+  name: Users (Superadmin)
+  type: folder
+  seq: 3
+
+request:
+  auth: inherit
+
+docs:
+  content: "Gestión de usuarios desde el superadmin (`/api/user/sa`). Requiere `superadmin_token`. No requiere `X-Tenant-ID`."
+  type: text/markdown

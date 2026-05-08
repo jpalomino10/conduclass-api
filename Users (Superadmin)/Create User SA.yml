@@ -1,0 +1,32 @@
+info:
+  name: Create User SA
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{base_url}}/api/user/sa"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: Bearer {{superadmin_token}}
+  body:
+    type: json
+    data: |-
+      {
+        "email": "instructor@tenant.com",
+        "password": "Pass123!",
+        "name": "Juan Instructor",
+        "document": "1044422259",
+        "role": "INSTRUCTOR"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Crea un usuario. Requiere token de superadmin.

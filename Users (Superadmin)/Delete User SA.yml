@@ -1,0 +1,20 @@
+info:
+  name: Delete User SA
+  type: http
+  seq: 5
+
+http:
+  method: DELETE
+  url: "{{base_url}}/api/user/sa/{{user_id}}"
+  headers:
+    - name: Authorization
+      value: Bearer {{superadmin_token}}
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: "Elimina un usuario del tenant. Retorna 204 No Content. Requiere token de superadmin."
