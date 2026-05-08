@@ -9,6 +9,8 @@ http:
   headers:
     - name: Authorization
       value: Bearer {{superadmin_token}}
+    - name: X-Tenant-ID
+      value: "{{tenant_slug}}"
   auth: inherit
 
 settings:
@@ -17,4 +19,4 @@ settings:
   followRedirects: true
   maxRedirects: 5
 
-docs: "Elimina un usuario del tenant. Retorna 204 No Content. Requiere token de superadmin."
+docs: Elimina un usuario del tenant. Retorna 204 No Content. Requiere token de superadmin.

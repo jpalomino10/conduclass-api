@@ -11,6 +11,8 @@ http:
       value: application/json
     - name: Authorization
       value: Bearer {{superadmin_token}}
+    - name: X-Tenant-ID
+      value: "{{tenant_slug}}"
   body:
     type: json
     data: |-

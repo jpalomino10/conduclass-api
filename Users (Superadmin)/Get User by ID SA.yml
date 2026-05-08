@@ -9,6 +9,8 @@ http:
   headers:
     - name: Authorization
       value: Bearer {{superadmin_token}}
+    - name: X-Tenant-ID
+      value: "{{tenant_slug}}"
   auth: inherit
 
 settings:
